@@ -1,1 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Karma & Luck — Amazon Growth Opportunity Review</title>
+<link rel="icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--red:#cc1100;--red-dark:#8a0b00;--white:#ffffff;--grey:#8a8a8a;--light-grey:#e5e5e5;--charcoal:#1a1a1a;--off-white:#f4f4f2;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Barlow',sans-serif;background:var(--off-white);color:var(--black);overflow-x:hidden;}
 
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);border-bottom:2px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px;}
+  .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:#fff;letter-spacing:.08em;white-space:nowrap;}
+  .nav-brand span{color:var(--red);}
+  .nav-links{display:flex;gap:0;list-style:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{display:block;padding:0 .85rem;line-height:60px;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;color:var(--grey);text-decoration:none;text-transform:uppercase;transition:color .2s;white-space:nowrap;}
+  .nav-links a:hover{color:var(--red);}
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;width:36px;height:36px;}
+  .hamburger span{display:block;width:22px;height:2px;background:#fff;transition:all .3s;}
+  .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:var(--black);border-bottom:2px solid var(--red);}
+  .nav-mobile.open{display:block;}
+  .nav-mobile a{display:block;padding:.9rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.1em;color:var(--grey);text-decoration:none;text-transform:uppercase;border-bottom:1px solid #1a1a1a;transition:color .2s;}
+  .nav-mobile a:hover{color:var(--red);}
+
+  /* PROGRESS BAR */
+  #progress{position:fixed;top:60px;left:0;right:0;z-index:99;height:3px;background:var(--red);transform-origin:left;transform:scaleX(0);transition:transform .1s linear;}
+
+  /* COVER */
+  #cover{min-height:100vh;background:var(--black);display:grid;place-items:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+  #cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(204,17,0,0.08) 0%,transparent 60%);pointer-events:none;}
+  .cover-inner{max-width:1200px;width:100%;}
+  .cover-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;line-height:.9;text-transform:uppercase;}
+  .cover-title .line-white{font-size:clamp(3rem,11vw,11rem);color:var(--white);display:block;}
+  .cover-title .line-red{font-size:clamp(3rem,11vw,11rem);color:var(--red);display:block;}
+  .cover-rule{width:100%;height:2px;background:var(--red);margin:2rem 0;transform:scaleX(0);transform-origin:left;animation:ruleIn .8s .6s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes ruleIn{to{transform:scaleX(1);}}
+  .cover-tagline{font-size:1rem;color:var(--grey);font-style:italic;margin-bottom:3rem;}
+  .cover-byline{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.15em;color:#444;text-transform:uppercase;}
+  .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .7s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes fadeUp{to{opacity:1;transform:none;}}
+  .cover-title{animation-delay:.2s;}.cover-tagline{animation-delay:.7s;}.cover-byline{animation-delay:.9s;}
+
+  /* SECTIONS */
+  .content{max-width:1200px;margin:0 auto;padding:0 3rem;}
+  .section{padding:5rem 0 2rem;opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease;}
+  .section.visible{opacity:1;transform:none;}
+  .section-header{background:var(--black);padding:1rem 1.5rem;display:flex;align-items:baseline;gap:.75rem;margin-bottom:2rem;}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;letter-spacing:.05em;color:var(--white);text-transform:uppercase;}
+  .sub-heading{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--black);border-left:4px solid var(--red);padding-left:.75rem;margin:2rem 0 .85rem;}
+  .red-label{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--red);text-transform:uppercase;margin:1.5rem 0 .5rem;}
+  p{font-size:1.05rem;line-height:1.7;color:#222;margin-bottom:.85rem;}
+  .callout{background:var(--charcoal);border-left:4px solid var(--red);padding:1rem 1.25rem;margin:1.5rem 0;}
+  .callout p{color:var(--white);font-style:italic;margin:0;font-size:1.05rem;line-height:1.7;}
+  .bullet-list{list-style:none;margin:.5rem 0 1rem 0;}
+  .bullet-list li{font-size:1rem;line-height:1.65;color:#222;padding:.25rem 0 .25rem 1.4rem;position:relative;}
+  .bullet-list li::before{content:'–';position:absolute;left:0;color:var(--red);font-weight:700;}
+
+  /* INSIGHT TABLE */
+  .insight-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .insight-table tr{border-bottom:1px solid var(--light-grey);}
+  .insight-table td{padding:.9rem 1rem;font-size:1rem;vertical-align:top;}
+  .insight-table td:first-child{background:var(--charcoal);width:25%;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.12em;color:var(--red);text-transform:uppercase;line-height:1.4;}
+  .insight-table td:last-child{background:var(--white);color:#222;line-height:1.6;}
+
+  /* BADGES */
+  .badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .65rem;}
+  .badge-high{background:rgba(204,17,0,.12);color:var(--red);border:1px solid rgba(204,17,0,.3);}
+  .badge-med-high{background:rgba(204,17,0,.06);color:#b04030;border:1px solid rgba(204,17,0,.2);}
+  .badge-med{background:#e8e8e6;color:#555;border:1px solid #ccc;}
+
+  /* COLLECTION TABLE (desktop) */
+  .collection-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .collection-table th{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.75rem 1rem;text-align:left;border-bottom:2px solid var(--red);}
+  .collection-table td{padding:.9rem 1rem;font-size:.95rem;line-height:1.6;color:#222;vertical-align:top;border-bottom:1px solid var(--light-grey);background:var(--white);}
+  .collection-table tbody tr:last-child td{border-bottom:none;}
+  .collection-table tbody tr:hover td{background:#f9f9f7;}
+  .collection-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;white-space:nowrap;background:#f9f9f7;color:var(--black);}
+  .collection-table td:nth-child(3){text-align:center;white-space:nowrap;}
+  .collection-sub{font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:400;color:var(--grey);display:block;margin-top:.2rem;white-space:normal;}
+  .collection-mobile{display:none;}
+
+  /* COLLECTION CARDS (mobile) */
+  .collection-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin:1.5rem 0;}
+  .collection-card{background:var(--white);border:1px solid var(--light-grey);border-top:3px solid var(--red);padding:1.5rem;}
+  .collection-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--black);margin-bottom:.5rem;}
+  .collection-card-badge{margin-bottom:.85rem;}
+  .collection-card-section{margin-top:.85rem;}
+  .collection-card-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
+  .collection-card p{font-size:.9rem;line-height:1.55;color:#555;margin:0;}
+
+  /* OPPORTUNITY CARDS */
+  .opportunity-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0;}
+  .opportunity-card{background:var(--white);border:1px solid var(--light-grey);border-left:4px solid var(--red);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1.25rem;}
+  .opportunity-num{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;flex-shrink:0;}
+  .opportunity-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--black);margin-bottom:.35rem;}
+  .opportunity-desc{font-size:.9rem;color:#444;line-height:1.55;}
+  .opportunity-impact{font-size:.85rem;color:#555;line-height:1.5;margin-top:.5rem;font-style:italic;border-top:1px solid var(--light-grey);padding-top:.5rem;}
+
+  /* COMMENTS */
+  .section-comment-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;background:transparent;border:1.5px solid var(--light-grey);padding:.45rem .9rem;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);transition:all .2s;}
+  .section-comment-btn:hover{border-color:var(--red);color:var(--red);}
+  .section-comment-btn .cb-count{background:var(--red);color:#fff;font-size:.72rem;font-weight:700;padding:.1rem .4rem;min-width:20px;text-align:center;display:none;}
+  .section-comment-btn.has-comments .cb-count{display:inline-block;}
+  .comment-panel{display:none;border:1.5px solid var(--light-grey);background:#fff;margin-top:.75rem;}
+  .comment-panel.open{display:block;}
+  .comment-panel-inner{padding:1.25rem;}
+  .comment-thread{margin-bottom:1rem;}
+  .comment-item{border-left:3px solid var(--red);padding:.75rem 1rem;margin-bottom:.75rem;background:#fafafa;}
+  .comment-item-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.25rem;margin-bottom:.35rem;}
+  .comment-item-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);}
+  .comment-item-time{font-size:.78rem;color:var(--grey);}
+  .comment-item-text{font-size:.95rem;line-height:1.6;color:#333;}
+  .no-comments{font-size:.9rem;color:var(--grey);font-style:italic;margin-bottom:1rem;}
+  .comment-form textarea{width:100%;padding:.6rem .75rem;border:1px solid #ddd;font-family:'Barlow',sans-serif;font-size:.95rem;resize:vertical;outline:none;background:#fafafa;display:block;margin-bottom:.5rem;}
+  .comment-form-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;}
+  .comment-form input[type=text]{flex:1;min-width:140px;padding:.5rem .65rem;border:1px solid #ddd;font-family:'Barlow',sans-serif;font-size:.95rem;outline:none;background:#fafafa;}
+  .comment-post-btn{background:var(--red);color:#fff;border:none;padding:.5rem 1.25rem;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+  .comment-post-btn:hover{background:var(--red-dark);}
+  .comment-post-btn:disabled{opacity:.5;cursor:default;}
+  .comment-status{font-size:.82rem;color:var(--grey);margin-top:.35rem;}
+
+  /* FOOTER */
+  footer{background:var(--black);padding:4rem 3rem;display:flex;justify-content:center;align-items:center;}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .content{padding:0 1.25rem;}
+    nav{padding:0 1.25rem;}
+    footer{padding:3rem 1.25rem;}
+    .conclusion-grid{grid-template-columns:1fr;}
+    .collection-table{display:none;}
+    .collection-mobile{display:block;}
+    .cover-title .line-white,.cover-title .line-red{font-size:clamp(3rem,18vw,7rem);}
+    .section-title{font-size:1.3rem;}
+    #cover{padding:5rem 1.25rem 3rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><span>BAD</span> MARKETING</div>
+  <div class="nav-links">
+    <a href="#s01">Overview</a>
+    <a href="#s02">Collections</a>
+    <a href="#s03">Protect Revenue</a>
+    <a href="#s04">Acquisition</a>
+    <a href="#s05">Discovery</a>
+    <a href="#s06">Perceived Value</a>
+    <a href="#s07">Customer Value</a>
+    <a href="#s08">Conclusion</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" id="hbg">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#s01" onclick="toggleMenu()">Overview</a>
+  <a href="#s02" onclick="toggleMenu()">Collections</a>
+  <a href="#s03" onclick="toggleMenu()">Protect Revenue</a>
+  <a href="#s04" onclick="toggleMenu()">Acquisition</a>
+  <a href="#s05" onclick="toggleMenu()">Discovery</a>
+  <a href="#s06" onclick="toggleMenu()">Perceived Value</a>
+  <a href="#s07" onclick="toggleMenu()">Customer Value</a>
+  <a href="#s08" onclick="toggleMenu()">Conclusion</a>
+</div>
+<div id="progress"></div>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-inner">
+    <div class="cover-title fade-up">
+      <span class="line-white">Karma &amp;</span>
+      <span class="line-red">Luck.</span>
+    </div>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline fade-up">Amazon Growth Opportunity Review</p>
+    <p class="cover-byline fade-up">Prepared by BAD Marketing &nbsp;·&nbsp; Amazon Department</p>
+  </div>
+</section>
+
+<!-- S01 — OPPORTUNITY SUMMARY -->
+<div class="section" id="s01">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Opportunity Summary</span>
+    </div>
+    <p>Karma &amp; Luck has established a strong Amazon presence supported by several high-performing collections and a diversified catalog. The review suggests there is meaningful opportunity for continued growth without requiring significant catalog expansion or changes to the current pricing strategy.</p>
+    <p>The greatest opportunity is to maximize the potential of the existing catalog. The review identified five Growth Opportunities that together create a connected strategy to strengthen customer acquisition, improve catalog discovery, reinforce perceived value and increase customer value.</p>
+
+    <div class="sub-heading">Five Growth Opportunities</div>
+    <div class="opportunity-grid">
+      <div class="opportunity-card">
+        <div class="opportunity-num">1</div>
+        <div>
+          <div class="opportunity-title">Protect Existing Revenue</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Continue protecting demand by maintaining strong inventory health across the brand's highest-performing collections and minimizing avoidable revenue leakage.</div>
+          <span class="badge badge-med">Medium</span>
+          <div class="opportunity-impact">Primarily a revenue protection initiative focused on preserving existing demand and organic visibility.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">2</div>
+        <div>
+          <div class="opportunity-title">Expand Customer Acquisition</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Increase customer acquisition by strengthening visibility across high-intent non-branded searches and continuing to build ownership within the brand's highest-potential product categories.</div>
+          <span class="badge badge-high">High</span>
+          <div class="opportunity-impact">Largest long-term opportunity to increase the customer base and drive sustainable revenue growth.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">3</div>
+        <div>
+          <div class="opportunity-title">Improve Catalog Discovery &amp; Customer Journey</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Help shoppers discover more of the catalog by creating stronger connections between complementary collections and improving navigation throughout the Amazon experience.</div>
+          <span class="badge badge-high">High</span>
+          <div class="opportunity-impact">Opportunity to distribute demand across more collections, reducing dependence on hero products while increasing total catalog productivity.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">4</div>
+        <div>
+          <div class="opportunity-title">Strengthen Perceived Value</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Reinforce the premium positioning of Karma &amp; Luck through more consistent storytelling, craftsmanship communication, symbolism and gifting experiences across all Amazon touchpoints.</div>
+          <span class="badge badge-med-high">Medium – High</span>
+          <div class="opportunity-impact">Opportunity to improve purchase confidence while supporting the brand's premium pricing strategy.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">5</div>
+        <div>
+          <div class="opportunity-title">Increase Customer Value</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Encourage broader portfolio adoption through Virtual Bundles, intention-based merchandising and stronger cross-selling to increase average order value and customer lifetime value.</div>
+          <span class="badge badge-med-high">Medium – High</span>
+          <div class="opportunity-impact">Opportunity to increase average order value without requiring additional traffic acquisition.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comments-s01"></div>
+  </div>
+</div>
+
+<!-- S02 — COLLECTION FOCUS -->
+<div class="section" id="s02">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Collection Focus</span>
+    </div>
+    <p>The catalog review identified four collections with the greatest potential to drive future growth, based on current performance, search demand and historical trends. These collections should be prioritized across SEO, advertising, creative development, Store optimization and Brand Story updates.</p>
+
+    <table class="collection-table">
+      <thead>
+        <tr>
+          <th>Collection</th>
+          <th>Current Position</th>
+          <th>Growth Opportunity</th>
+          <th>Recommended Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Protection Collection</strong><br><span class="collection-sub">Evil Eye, Red String &amp; Protection Jewelry</span></td>
+          <td>The brand's strongest customer acquisition category with significant non-branded search demand.</td>
+          <td><span class="badge badge-high">Very High</span></td>
+          <td>Continue expanding non-branded visibility, strengthen collection positioning and reinforce premium value across the customer journey.</td>
+        </tr>
+        <tr>
+          <td><strong>Crystal Trees</strong></td>
+          <td>Historically one of the brand's strongest collections with significant opportunity to re-establish category leadership.</td>
+          <td><span class="badge badge-high">Very High</span></td>
+          <td>Re-establish Crystal Trees as one of the brand's key collections through improved search visibility, premium positioning and greater prominence across the Store and advertising.</td>
+        </tr>
+        <tr>
+          <td><strong>Men's Collection</strong></td>
+          <td>Established collection with opportunity to capture a larger share of the men's spiritual jewelry market.</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td>Strengthen collection visibility, improve differentiation and create stronger pathways into complementary collections.</td>
+        </tr>
+        <tr>
+          <td><strong>Home Décor Collection</strong></td>
+          <td>Category with opportunity to broaden the customer journey beyond jewelry.</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td>Increase collection visibility, strengthen connections with the core jewelry portfolio and position Home Décor as a natural extension of the Karma &amp; Luck lifestyle.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="collection-mobile">
+      <div class="collection-grid">
+        <div class="collection-card">
+          <div class="collection-card-title">Protection Collection</div>
+          <div style="font-size:.8rem;color:var(--grey);margin-bottom:.6rem;">Evil Eye, Red String &amp; Protection Jewelry</div>
+          <div class="collection-card-badge"><span class="badge badge-high">Very High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>The brand's strongest customer acquisition category with significant non-branded search demand.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Continue expanding non-branded visibility, strengthen collection positioning and reinforce premium value across the customer journey.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Crystal Trees</div>
+          <div class="collection-card-badge"><span class="badge badge-high">Very High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Historically one of the brand's strongest collections with significant opportunity to re-establish category leadership.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Re-establish Crystal Trees as one of the brand's key collections through improved search visibility, premium positioning and greater prominence across the Store and advertising.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Men's Collection</div>
+          <div class="collection-card-badge"><span class="badge badge-high">High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Established collection with opportunity to capture a larger share of the men's spiritual jewelry market.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Strengthen collection visibility, improve differentiation and create stronger pathways into complementary collections.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Home Décor Collection</div>
+          <div class="collection-card-badge"><span class="badge badge-high">High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Category with opportunity to broaden the customer journey beyond jewelry.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Increase collection visibility, strengthen connections with the core jewelry portfolio and position Home Décor as a natural extension of the Karma &amp; Luck lifestyle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comments-s02"></div>
+  </div>
+</div>
+
+<!-- S03 — GROWTH OPPORTUNITY 1 -->
+<div class="section" id="s03">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 1:</span> Protect Existing Revenue</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Maintain availability across hero collections.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Historical stockouts impacted several hero collections, resulting in avoidable revenue leakage.</li>
+      <li>Current inventory health has improved significantly and is no longer a primary constraint to growth.</li>
+      <li>The opportunity has shifted from resolving inventory issues to protecting existing demand through proactive inventory planning.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Prioritize inventory planning across the brand's highest-performing collections.</li>
+      <li>Implement collection-level forecasting to better align replenishment with demand trends.</li>
+      <li>Establish regular inventory health reviews to identify potential risks before they impact sales.</li>
+    </ul>
+
+    <div id="comments-s03"></div>
+  </div>
+</div>
+
+<!-- S04 — GROWTH OPPORTUNITY 2 -->
+<div class="section" id="s04">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 2:</span> Expand Customer Acquisition</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Continue expanding visibility beyond branded searches.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Branded searches continue to drive a significant share of customer acquisition.</li>
+      <li>Significant opportunity exists to expand visibility across Evil Eye, Red String and Crystal Trees.</li>
+      <li>Current PPC structure provides a strong foundation but remains primarily focused on individual products rather than collections.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Expand non-branded SEO across the highest-opportunity product categories.</li>
+      <li>Increase Sponsored Brands investment to strengthen collection-level visibility and New-to-Brand acquisition.</li>
+      <li>Develop a collection-based PPC strategy to support category ownership beyond individual ASINs.</li>
+      <li>Leverage Creator storytelling to introduce new customers to the brand through symbolism, craftsmanship and customer intentions rather than individual products.</li>
+    </ul>
+
+    <div id="comments-s04"></div>
+  </div>
+</div>
+
+<!-- S05 — GROWTH OPPORTUNITY 3 -->
+<div class="section" id="s05">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 3:</span> Improve Catalog Discovery &amp; Customer Journey</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Help customers discover more products by creating stronger connections between collections throughout the customer journey.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>The Amazon Store is primarily organized around product categories rather than customer intent.</li>
+      <li>Collections are presented largely as independent shopping destinations.</li>
+      <li>Opportunities for customers to discover related collections throughout the shopping journey are limited.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Introduce intention-based Store navigation to better align with how customers shop.</li>
+      <li>Refresh the Brand Story to strengthen portfolio discovery and introduce complementary collections.</li>
+      <li>Create stronger connections between related collections (e.g. Protection &#8594; Crystal Trees, Bracelets &#8594; Necklaces).</li>
+      <li>Develop collection-focused store pages to improve product discovery.</li>
+    </ul>
+
+    <div id="comments-s05"></div>
+  </div>
+</div>
+
+<!-- S06 — GROWTH OPPORTUNITY 4 -->
+<div class="section" id="s06">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 4:</span> Strengthen Perceived Value</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Reinforce Karma &amp; Luck's premium positioning consistently throughout the customer journey.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Premium pricing is aligned with the brand positioning.</li>
+      <li>Voice of the Customer is generally healthy.</li>
+      <li>Opportunity lies in strengthening how craftsmanship, symbolism and gifting are communicated throughout the shopping experience.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Strengthen premium storytelling across the customer journey.</li>
+      <li>Complete the creative refresh to better communicate craftsmanship, symbolism and product quality.</li>
+      <li>Refine gifting positioning to strengthen emotional appeal and key purchasing occasions.</li>
+      <li>Create a more consistent premium experience across Listings, Store, A+ Content, Brand Story and Sponsored Brand creative.</li>
+    </ul>
+
+    <div id="comments-s06"></div>
+  </div>
+</div>
+
+<!-- S07 — GROWTH OPPORTUNITY 5 -->
+<div class="section" id="s07">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 5:</span> Increase Customer Value</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Increase average order value through broader product adoption.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>No bundles identified.</li>
+      <li>Complementary collections sold independently, limiting opportunities for cross-collection purchases.</li>
+      <li>Strong opportunity for intention-based positioning.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Develop a cross-sell framework across related collections (e.g. Protection &#8594; Crystal Trees, Bracelets &#8594; Necklaces).</li>
+      <li>Launch Virtual Bundles around key customer intentions and occasions.</li>
+      <li>Strengthen collection discovery throughout the customer journey across the Store, Brand Story, A+ Content and Sponsored Brands.</li>
+    </ul>
+
+    <div id="comments-s07"></div>
+  </div>
+</div>
+
+<!-- S08 — CONCLUSION -->
+<div class="section" id="s08">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Conclusion</span>
+    </div>
+
+    <p>The review suggests that Karma &amp; Luck has a strong foundation for continued growth on Amazon. Rather than relying on catalog expansion or pricing adjustments, the greatest opportunities lie in maximizing the potential of the existing catalog.</p>
+
+    <p>By strengthening customer acquisition, improving product discovery, reinforcing perceived value and increasing customer value, Karma &amp; Luck can build a more diversified and scalable Amazon presence while reducing reliance on a small number of hero products.</p>
+
+    <div id="comments-s08"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="text-align:center;width:100%;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:.6rem;">We Make Good Brands Go Bad</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--grey);">BAD Marketing &nbsp;·&nbsp; Amazon Department</div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMobile').classList.toggle('open');
+  }
+
+  // Progress bar
+  window.addEventListener('scroll',()=>{
+    const d=document.documentElement;
+    const pct=(d.scrollTop/(d.scrollHeight-d.clientHeight));
+    document.getElementById('progress').style.transform='scaleX('+pct+')';
+  });
+
+  // Section fade-in
+  const sections=document.querySelectorAll('.section');
+  const sectionObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+  },{threshold:0.08});
+  sections.forEach(s=>sectionObs.observe(s));
+
+  const SUPABASE_URL='https://zbcqdcwibbuyfmytfngn.supabase.co';
+  const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpiY3FkY3dpYmJ1eWZteXRmbmduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTgyNTEsImV4cCI6MjA5Nzg3NDI1MX0.gXJna_dG08OVNyQy6VyakhJ7ays93ibLlWCDrS6W1RM';
+  const DOC_PREFIX='karma-and-luck-q2-2026';
+
+  const SECTIONS={
+    's01':'01 · Opportunity Summary',
+    's02':'02 · Collection Focus',
+    's03':'03 · Protect Existing Revenue',
+    's04':'04 · Expand Customer Acquisition',
+    's05':'05 · Improve Catalog Discovery',
+    's06':'06 · Strengthen Perceived Value',
+    's07':'07 · Increase Customer Value',
+    's08':'08 · Conclusion'
+  };
+
+  async function fetchComments(){
+    try{
+      const ids=Object.keys(SECTIONS).map(s=>`${DOC_PREFIX}-${s}`);
+      const r=await fetch(
+        `${SUPABASE_URL}/rest/v1/comments?section_id=in.(${ids.map(s=>`"${s}"`).join(',')})&order=created_at.asc`,
+        {headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`}}
+      );
+      return await r.json();
+    }catch(e){return[];}
+  }
+
+  async function saveComment(sectionId,name,body){
+    const r=await fetch(`${SUPABASE_URL}/rest/v1/comments`,{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_KEY,
+        'Authorization':`Bearer ${SUPABASE_KEY}`,
+        'Content-Type':'application/json',
+        'Prefer':'return=representation'
+      },
+      body:JSON.stringify({section_id:`${DOC_PREFIX}-${sectionId}`,name:name||'Anonymous',body})
+    });
+    if(!r.ok) throw new Error('Failed to save');
+    return await fetchComments();
+  }
+
+  function formatDate(iso){
+    const d=new Date(iso);
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
+      +' · '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  function renderSection(id,comments){
+    const container=document.getElementById('comments-'+id);
+    if(!container) return;
+    const fullId=`${DOC_PREFIX}-${id}`;
+    const sectionComments=comments.filter(c=>c.section_id===fullId);
+    const count=sectionComments.length;
+    container.innerHTML=`
+      <button class="section-comment-btn ${count>0?'has-comments':''}" onclick="togglePanel('${id}')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        ${count>0?count+' comment'+(count>1?'s':''):'Add comment'}
+        <span class="cb-count">${count}</span>
+      </button>
+      <div class="comment-panel ${count>0?'open':''}" id="panel-${id}">
+        <div class="comment-panel-inner">
+          <div class="comment-thread" id="thread-${id}">
+            ${count===0?'<p class="no-comments">No comments yet on this section.</p>':
+              sectionComments.map(c=>`
+                <div class="comment-item">
+                  <div class="comment-item-header">
+                    <span class="comment-item-name">${escHtml(c.name||'Anonymous')}</span>
+                    <span class="comment-item-time">${formatDate(c.created_at)}</span>
+                  </div>
+                  <p class="comment-item-text">${escHtml(c.body)}</p>
+                </div>`).join('')}
+          </div>
+          <div class="comment-form">
+            <textarea id="txt-${id}" rows="2" placeholder="Write a comment or question on this section..."></textarea>
+            <div class="comment-form-row">
+              <input type="text" id="name-${id}" placeholder="Your name (optional)">
+              <button class="comment-post-btn" id="btn-${id}" onclick="postComment('${id}')">Post</button>
+            </div>
+            <div class="comment-status" id="status-${id}"></div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function togglePanel(id){
+    const panel=document.getElementById('panel-'+id);
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){
+      setTimeout(()=>{const t=document.getElementById('txt-'+id);if(t)t.focus();},50);
+    }
+  }
+
+  async function postComment(id){
+    const txt=document.getElementById('txt-'+id);
+    const nameEl=document.getElementById('name-'+id);
+    const btn=document.getElementById('btn-'+id);
+    const status=document.getElementById('status-'+id);
+    const body=txt.value.trim();
+    if(!body){status.textContent='Please write something first.';status.style.color='#cc1100';return;}
+    btn.disabled=true;status.textContent='Posting...';status.style.color='#8a8a8a';
+    try{
+      const comments=await saveComment(id,nameEl.value.trim(),body);
+      txt.value='';nameEl.value='';
+      status.textContent='Posted ✓';status.style.color='#2a7a2a';
+      setTimeout(()=>{status.textContent='';},3000);
+      Object.keys(SECTIONS).forEach(sid=>renderSection(sid,comments));
+      setTimeout(()=>{const p=document.getElementById('panel-'+id);if(p)p.classList.add('open');},50);
+    }catch(e){
+      status.textContent='Failed to post. Please try again.';status.style.color='#cc1100';
+    }
+    btn.disabled=false;
+  }
+
+  async function init(){
+    const comments=await fetchComments();
+    Object.keys(SECTIONS).forEach(id=>renderSection(id,comments));
+    setTimeout(()=>{
+      Object.keys(SECTIONS).forEach(id=>{
+        const panel=document.getElementById('panel-'+id);
+        const hasComments=comments.some(c=>c.section_id===`${DOC_PREFIX}-${id}`);
+        if(panel&&hasComments) panel.classList.add('open');
+      });
+    },200);
+  }
+
+  init();
+</script>
+</body>
+</html>
