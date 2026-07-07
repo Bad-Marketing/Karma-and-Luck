@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Karma & Luck — Amazon Growth Opportunity Review</title>
+<link rel="icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--red:#cc1100;--red-dark:#8a0b00;--white:#ffffff;--grey:#8a8a8a;--light-grey:#e5e5e5;--charcoal:#1a1a1a;--off-white:#f4f4f2;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Barlow',sans-serif;background:var(--off-white);color:var(--black);overflow-x:hidden;}
+
+  /* NAV - two tier */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);border-bottom:2px solid var(--red);}
+  .nav-top{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px;}
+  .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:#fff;letter-spacing:.08em;white-space:nowrap;}
+  .nav-brand span{color:var(--red);}
+  .nav-parts{display:flex;align-items:center;gap:0;}
+  .nav-part{position:relative;}
+  .nav-part-btn{display:flex;align-items:center;gap:.3rem;padding:0 1.1rem;height:60px;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:none;border:none;cursor:pointer;white-space:nowrap;transition:color .2s;}
+  .nav-part-btn:hover{color:var(--red);}
+  .nav-part-btn .arrow{font-size:.6rem;transition:transform .2s;}
+  .nav-part:hover .nav-part-btn .arrow{transform:rotate(180deg);}
+  .nav-part-btn.active{color:var(--red);}
+  .nav-part-dropdown{display:none;position:absolute;top:60px;left:0;background:var(--black);border:1px solid #2a2a2a;border-top:2px solid var(--red);min-width:230px;z-index:200;}
+  .nav-part:last-child .nav-part-dropdown{left:auto;right:0;}
+  .nav-part:hover .nav-part-dropdown{display:block;}
+  .nav-part-dropdown a{display:block;padding:.75rem 1.25rem;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;color:var(--grey);text-decoration:none;text-transform:uppercase;border-bottom:1px solid #1a1a1a;transition:color .2s;white-space:nowrap;}
+  .nav-part-dropdown a:last-child{border-bottom:none;}
+  .nav-part-dropdown a:hover{color:var(--red);}
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;width:36px;height:36px;}
+  .hamburger span{display:block;width:22px;height:2px;background:#fff;transition:all .3s;}
+
+  /* MOBILE NAV */
+  .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:var(--black);border-bottom:2px solid var(--red);max-height:calc(100vh - 60px);overflow-y:auto;}
+  .nav-mobile.open{display:block;}
+  .nav-mobile-part-label{display:block;padding:.85rem 1.5rem .5rem;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--white);background:#111;border-bottom:1px solid var(--red);}
+  .nav-mobile a{display:block;padding:.8rem 1.5rem .8rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;color:var(--grey);text-decoration:none;text-transform:uppercase;border-bottom:1px solid #1a1a1a;transition:color .2s;}
+  .nav-mobile a:hover{color:var(--red);}
+
+  /* PROGRESS BAR */
+  #progress{position:fixed;top:60px;left:0;right:0;z-index:99;height:3px;background:var(--red);transform-origin:left;transform:scaleX(0);transition:transform .1s linear;}
+
+  /* SECTION DIVIDERS */
+  .section-divider{background:var(--black);padding:3rem 0 2rem;margin-top:2rem;}
+  .section-divider-inner{max-width:1200px;margin:0 auto;padding:0 3rem;border-bottom:2px solid var(--red);padding-bottom:1.25rem;}
+  .section-divider-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;}
+  .section-divider-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--white);}
+  @media(max-width:768px){.section-divider-inner{padding:0 1.25rem 1.25rem;}}
+
+  /* COVER */
+  #cover{min-height:100vh;background:var(--black);display:grid;place-items:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+  #cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(204,17,0,0.08) 0%,transparent 60%);pointer-events:none;}
+  .cover-inner{max-width:1200px;width:100%;}
+  .cover-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;line-height:.9;text-transform:uppercase;}
+  .cover-title .line-white{font-size:clamp(3rem,11vw,11rem);color:var(--white);display:block;}
+  .cover-title .line-red{font-size:clamp(3rem,11vw,11rem);color:var(--red);display:block;}
+  .cover-rule{width:100%;height:2px;background:var(--red);margin:2rem 0;transform:scaleX(0);transform-origin:left;animation:ruleIn .8s .6s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes ruleIn{to{transform:scaleX(1);}}
+  .cover-tagline{font-size:1rem;color:var(--grey);font-style:italic;margin-bottom:3rem;}
+  .cover-byline{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.15em;color:#444;text-transform:uppercase;}
+  .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .7s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes fadeUp{to{opacity:1;transform:none;}}
+  .cover-title{animation-delay:.2s;}.cover-tagline{animation-delay:.7s;}.cover-byline{animation-delay:.9s;}
+
+  /* SECTIONS */
+  .content{max-width:1200px;margin:0 auto;padding:0 3rem;}
+  .section{padding:5rem 0 2rem;opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease;}
+  .section.visible{opacity:1;transform:none;}
+  .section-header{background:var(--black);padding:1rem 1.5rem;display:flex;align-items:baseline;gap:.75rem;margin-bottom:2rem;}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;letter-spacing:.05em;color:var(--white);text-transform:uppercase;}
+  .sub-heading{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--black);border-left:4px solid var(--red);padding-left:.75rem;margin:2rem 0 .85rem;}
+  .red-label{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--red);text-transform:uppercase;margin:1.5rem 0 .5rem;}
+  p{font-size:1.05rem;line-height:1.7;color:#222;margin-bottom:.85rem;}
+  .callout{background:var(--charcoal);border-left:4px solid var(--red);padding:1rem 1.25rem;margin:1.5rem 0;}
+  .callout p{color:var(--white);font-style:italic;margin:0;font-size:1.05rem;line-height:1.7;}
+  .bullet-list{list-style:none;margin:.5rem 0 1rem 0;}
+  .bullet-list li{font-size:1rem;line-height:1.65;color:#222;padding:.25rem 0 .25rem 1.4rem;position:relative;}
+  .bullet-list li::before{content:'–';position:absolute;left:0;color:var(--red);font-weight:700;}
+
+  /* INSIGHT TABLE */
+  .insight-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .insight-table tr{border-bottom:1px solid var(--light-grey);}
+  .insight-table td{padding:.9rem 1rem;font-size:1rem;vertical-align:top;}
+  .insight-table td:first-child{background:var(--charcoal);width:25%;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.12em;color:var(--red);text-transform:uppercase;line-height:1.4;}
+  .insight-table td:last-child{background:var(--white);color:#222;line-height:1.6;}
+
+  /* BADGES */
+  .badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .65rem;}
+  .badge-high{background:rgba(204,17,0,.12);color:var(--red);border:1px solid rgba(204,17,0,.3);}
+  .badge-med-high{background:rgba(204,17,0,.06);color:#b04030;border:1px solid rgba(204,17,0,.2);}
+  .badge-med{background:#e8e8e6;color:#555;border:1px solid #ccc;}
+
+  /* COLLECTION TABLE (desktop) */
+  .collection-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .collection-table th{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.75rem 1rem;text-align:left;border-bottom:2px solid var(--red);}
+  .collection-table td{padding:.9rem 1rem;font-size:.95rem;line-height:1.6;color:#222;vertical-align:top;border-bottom:1px solid var(--light-grey);background:var(--white);}
+  .collection-table tbody tr:last-child td{border-bottom:none;}
+  .collection-table tbody tr:hover td{background:#f9f9f7;}
+  .collection-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;white-space:nowrap;background:#f9f9f7;color:var(--black);}
+  .collection-table td:nth-child(3){text-align:center;white-space:nowrap;}
+  .collection-sub{font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:400;color:var(--grey);display:block;margin-top:.2rem;white-space:normal;}
+  .collection-mobile{display:none;}
+
+  /* COLLECTION CARDS (mobile) */
+  .collection-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin:1.5rem 0;}
+  .collection-card{background:var(--white);border:1px solid var(--light-grey);border-top:3px solid var(--red);padding:1.5rem;}
+  .collection-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--black);margin-bottom:.5rem;}
+  .collection-card-badge{margin-bottom:.85rem;}
+  .collection-card-section{margin-top:.85rem;}
+  .collection-card-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
+  .collection-card p{font-size:.9rem;line-height:1.55;color:#555;margin:0;}
+
+  /* OPPORTUNITY CARDS */
+  .opportunity-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0;}
+  .opportunity-card{background:var(--white);border:1px solid var(--light-grey);border-left:4px solid var(--red);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1.25rem;}
+  .opportunity-num{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;flex-shrink:0;}
+  .opportunity-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--black);margin-bottom:.35rem;}
+  .opportunity-desc{font-size:.9rem;color:#444;line-height:1.55;}
+  .opportunity-impact{font-size:.85rem;color:#555;line-height:1.5;margin-top:.5rem;font-style:italic;border-top:1px solid var(--light-grey);padding-top:.5rem;}
+
+  /* COMMENTS */
+  .section-comment-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;background:transparent;border:1.5px solid var(--light-grey);padding:.45rem .9rem;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);transition:all .2s;}
+  .section-comment-btn:hover{border-color:var(--red);color:var(--red);}
+  .section-comment-btn .cb-count{background:var(--red);color:#fff;font-size:.72rem;font-weight:700;padding:.1rem .4rem;min-width:20px;text-align:center;display:none;}
+  .section-comment-btn.has-comments .cb-count{display:inline-block;}
+  .comment-panel{display:none;border:1.5px solid var(--light-grey);background:#fff;margin-top:.75rem;}
+  .comment-panel.open{display:block;}
+  .comment-panel-inner{padding:1.25rem;}
+  .comment-thread{margin-bottom:1rem;}
+  .comment-item{border-left:3px solid var(--red);padding:.75rem 1rem;margin-bottom:.75rem;background:#fafafa;}
+  .comment-item-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.25rem;margin-bottom:.35rem;}
+  .comment-item-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);}
+  .comment-item-time{font-size:.78rem;color:var(--grey);}
+  .comment-item-text{font-size:.95rem;line-height:1.6;color:#333;}
+  .no-comments{font-size:.9rem;color:var(--grey);font-style:italic;margin-bottom:1rem;}
+  .comment-form textarea{width:100%;padding:.6rem .75rem;border:1px solid #ddd;font-family:'Barlow',sans-serif;font-size:.95rem;resize:vertical;outline:none;background:#fafafa;display:block;margin-bottom:.5rem;}
+  .comment-form-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;}
+  .comment-form input[type=text]{flex:1;min-width:140px;padding:.5rem .65rem;border:1px solid #ddd;font-family:'Barlow',sans-serif;font-size:.95rem;outline:none;background:#fafafa;}
+  .comment-post-btn{background:var(--red);color:#fff;border:none;padding:.5rem 1.25rem;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+  .comment-post-btn:hover{background:var(--red-dark);}
+  .comment-post-btn:disabled{opacity:.5;cursor:default;}
+  .comment-status{font-size:.82rem;color:var(--grey);margin-top:.35rem;}
+
+  .impl-mobile{display:none;margin:1.5rem 0;}
+  .impl-mobile-group{margin-bottom:1.5rem;}
+  .impl-mobile-group-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.5rem .75rem;margin-bottom:.5rem;}
+  .impl-mobile-row{background:var(--white);border:1px solid var(--light-grey);border-left:3px solid var(--red);padding:.75rem 1rem;margin-bottom:.5rem;}
+  .impl-mobile-project{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--black);margin-bottom:.35rem;}
+  .impl-mobile-months{display:flex;flex-wrap:wrap;gap:.35rem;}
+  .impl-month-pill{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;background:var(--red);color:#fff;padding:.2rem .55rem;}
+  .roadmap-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+  .roadmap-table th{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.75rem 1rem;text-align:left;border-bottom:2px solid var(--red);}
+  .roadmap-table td{padding:.85rem 1rem;font-size:.95rem;line-height:1.6;color:#222;vertical-align:top;border-bottom:1px solid var(--light-grey);background:var(--white);}
+  .roadmap-table tbody tr:last-child td{border-bottom:none;}
+  .roadmap-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--black);white-space:nowrap;background:#f9f9f7;}
+
+  /* IMPLEMENTATION GRID */
+  .impl-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.88rem;}
+  .impl-table th{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.6rem .75rem;text-align:left;border-bottom:2px solid var(--red);white-space:nowrap;}
+  .impl-table td{padding:.6rem .75rem;vertical-align:middle;border-bottom:1px solid var(--light-grey);background:var(--white);color:#222;line-height:1.4;}
+  .impl-table tbody tr:last-child td{border-bottom:none;}
+  .impl-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--black);background:#f9f9f7;white-space:nowrap;}
+  .impl-table td:nth-child(2){color:var(--grey);font-size:.82rem;}
+  .impl-dot{display:inline-block;width:10px;height:10px;background:var(--red);border-radius:50%;}
+
+  .asin-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.88rem;}
+  .asin-table th{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:var(--charcoal);padding:.6rem .75rem;text-align:left;border-bottom:2px solid var(--red);}
+  .asin-table td{padding:.65rem .75rem;vertical-align:top;border-bottom:1px solid var(--light-grey);background:var(--white);color:#222;line-height:1.5;}
+  .asin-table tbody tr:last-child td{border-bottom:none;}
+  .asin-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--black);background:#f9f9f7;white-space:nowrap;}
+  .asin-code{font-family:monospace;font-size:.82rem;color:var(--grey);}
+  .asin-children{font-size:.78rem;color:var(--grey);line-height:1.4;}
+
+  /* ASIN MOBILE CARDS */
+  .asin-mobile{display:none;margin:1rem 0;}
+  .asin-mobile-card{background:var(--white);border:1px solid var(--light-grey);border-left:3px solid var(--red);padding:1rem 1.1rem;margin-bottom:.75rem;}
+  .asin-mobile-rank{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
+  .asin-mobile-product{font-size:.95rem;font-weight:600;color:var(--black);line-height:1.45;margin-bottom:.6rem;}
+  .asin-mobile-meta{display:grid;grid-template-columns:1fr 1fr;gap:.35rem .75rem;margin-bottom:.5rem;}
+  .asin-mobile-meta-item{font-size:.82rem;color:#444;}
+  .asin-mobile-meta-label{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);display:block;margin-bottom:.1rem;}
+  .asin-mobile-code{font-family:monospace;font-size:.8rem;color:var(--grey);}
+  @media(max-width:900px){.asin-table{display:none;}.asin-mobile{display:block;}}
+
+  /* DELIVERABLE CARDS */
+  .deliverable-card{background:var(--white);border:1px solid var(--light-grey);border-left:4px solid var(--red);padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .deliverable-card-header{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap;}
+  .deliverable-num{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--red);flex-shrink:0;}
+  .deliverable-title{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--black);}
+  .deliverable-period{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-left:auto;white-space:nowrap;}
+  @media(max-width:900px){.deliverable-period{margin-left:0;width:100%;white-space:normal;}}
+  .deliverable-shared{font-size:.8rem;color:var(--grey);font-style:italic;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--light-grey);}
+
+  /* PHASE CARDS */
+  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;}
+  .phase-card{background:var(--white);border:1px solid var(--light-grey);border-top:3px solid var(--red);padding:1.25rem;}
+  .phase-card-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem;}
+  .phase-card-months{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--black);margin-bottom:.5rem;}
+  .phase-card-obj{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;text-transform:uppercase;color:var(--black);margin-bottom:.5rem;}
+  .phase-card-desc{font-size:.88rem;color:#555;line-height:1.55;}
+  @media(max-width:768px){.phase-grid{grid-template-columns:1fr;}.impl-table th:nth-child(n+3),.impl-table td:nth-child(n+3){display:none;}.roadmap-table td:first-child{white-space:normal;}}
+
+  /* PROGRESS BAR */
+  .section-divider{background:var(--black);padding:3rem 0 2rem;margin-top:2rem;}
+  .section-divider-inner{max-width:1200px;margin:0 auto;padding:0 3rem;border-bottom:2px solid var(--red);padding-bottom:1.25rem;}
+  .section-divider-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;}
+  .section-divider-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--white);}
+  @media(max-width:768px){.section-divider-inner{padding:0 1.25rem 1.25rem;}}
+
+  /* FOOTER */
+  footer{background:var(--black);padding:4rem 3rem;display:flex;justify-content:center;align-items:center;}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .nav-parts{display:none;}
+    .hamburger{display:flex;}
+    .content{padding:0 1.25rem;}
+    nav{padding:0;}
+    .nav-top{padding:0 1.25rem;}
+    footer{padding:3rem 1.25rem;}
+    .conclusion-grid{grid-template-columns:1fr;}
+    .collection-table{display:none;}
+    .collection-mobile{display:block;}
+    .cover-title .line-white,.cover-title .line-red{font-size:clamp(3rem,18vw,7rem);}
+    .section-title{font-size:1.3rem;}
+    #cover{padding:5rem 1.25rem 3rem;}
+    .phase-grid{grid-template-columns:1fr;}
+    .impl-table{display:none;}
+    .impl-mobile{display:block;}
+    .roadmap-table td:first-child{white-space:normal;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <div class="nav-brand"><span>BAD</span> MARKETING</div>
+    <div class="nav-parts">
+      <div class="nav-part">
+        <button class="nav-part-btn">Opportunity Assessment <span class="arrow">▾</span></button>
+        <div class="nav-part-dropdown">
+          <a href="#s01">Opportunity Summary</a>
+          <a href="#s02">Collection Focus</a>
+          <a href="#s03">Protect Existing Revenue</a>
+          <a href="#s04">Expand Customer Acquisition</a>
+          <a href="#s05">Catalog Discovery</a>
+          <a href="#s06">Perceived Value</a>
+          <a href="#s07">Customer Value</a>
+          <a href="#s08">Conclusion</a>
+        </div>
+      </div>
+      <div class="nav-part">
+        <button class="nav-part-btn">Strategic Roadmap <span class="arrow">▾</span></button>
+        <div class="nav-part-dropdown">
+          <a href="#r01">Customer Journey Framework</a>
+          <a href="#r02">Advertising Direction</a>
+          <a href="#r03">High-Level Roadmap</a>
+          <a href="#r04">Implementation Plan</a>
+          <a href="#r05">Project Deliverables</a>
+          <a href="#r06">ASIN Assignments</a>
+          <a href="#r07">Inventory Planning</a>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hbg">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <span class="nav-mobile-part-label">Opportunity Assessment</span>
+  <a href="#s01" onclick="toggleMenu()">Opportunity Summary</a>
+  <a href="#s02" onclick="toggleMenu()">Collection Focus</a>
+  <a href="#s03" onclick="toggleMenu()">Protect Existing Revenue</a>
+  <a href="#s04" onclick="toggleMenu()">Expand Customer Acquisition</a>
+  <a href="#s05" onclick="toggleMenu()">Catalog Discovery</a>
+  <a href="#s06" onclick="toggleMenu()">Perceived Value</a>
+  <a href="#s07" onclick="toggleMenu()">Customer Value</a>
+  <a href="#s08" onclick="toggleMenu()">Conclusion</a>
+  <span class="nav-mobile-part-label">Strategic Roadmap</span>
+  <a href="#r01" onclick="toggleMenu()">Customer Journey Framework</a>
+  <a href="#r02" onclick="toggleMenu()">Advertising Direction</a>
+  <a href="#r03" onclick="toggleMenu()">High-Level Roadmap</a>
+  <a href="#r04" onclick="toggleMenu()">Implementation Plan</a>
+  <a href="#r05" onclick="toggleMenu()">Project Deliverables</a>
+  <a href="#r06" onclick="toggleMenu()">ASIN Assignments</a>
+  <a href="#r07" onclick="toggleMenu()">Inventory Planning</a>
+</div>
+<div id="progress"></div>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-inner">
+    <div class="cover-title fade-up">
+      <span class="line-white">Karma &amp;</span>
+      <span class="line-red">Luck.</span>
+    </div>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline fade-up">Amazon Growth Opportunity Review</p>
+    <p class="cover-byline fade-up">Prepared by BAD Marketing &nbsp;·&nbsp; Amazon Department</p>
+  </div>
+</section>
+
+<!-- DIVIDER: GROWTH OPPORTUNITY ASSESSMENT -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Part One</div>
+    <div class="section-divider-title">Growth Opportunity Assessment</div>
+  </div>
+</div>
+
+<!-- S01 — OPPORTUNITY SUMMARY -->
+<div class="section" id="s01">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Opportunity Summary</span>
+    </div>
+    <p>Karma &amp; Luck has established a strong Amazon presence supported by several high-performing collections and a diversified catalog. The review suggests there is meaningful opportunity for continued growth without requiring significant catalog expansion or changes to the current pricing strategy.</p>
+    <p>The greatest opportunity is to maximize the potential of the existing catalog. The review identified five Growth Opportunities that together create a connected strategy to strengthen customer acquisition, improve catalog discovery, reinforce perceived value and increase customer value.</p>
+
+    <div class="sub-heading">Five Growth Opportunities</div>
+    <div class="opportunity-grid">
+      <div class="opportunity-card">
+        <div class="opportunity-num">1</div>
+        <div>
+          <div class="opportunity-title">Protect Existing Revenue</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Continue protecting demand by maintaining strong inventory health across the brand's highest-performing collections and minimizing avoidable revenue leakage.</div>
+          <span class="badge badge-med">Medium</span>
+          <div class="opportunity-impact">Primarily a revenue protection initiative focused on preserving existing demand and organic visibility.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">2</div>
+        <div>
+          <div class="opportunity-title">Expand Customer Acquisition</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Increase customer acquisition by strengthening visibility across high-intent non-branded searches and continuing to build ownership within the brand's highest-potential product categories.</div>
+          <span class="badge badge-high">High</span>
+          <div class="opportunity-impact">Largest long-term opportunity to increase the customer base and drive sustainable revenue growth.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">3</div>
+        <div>
+          <div class="opportunity-title">Improve Catalog Discovery &amp; Customer Journey</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Help shoppers discover more of the catalog by creating stronger connections between complementary collections and improving navigation throughout the Amazon experience.</div>
+          <span class="badge badge-high">High</span>
+          <div class="opportunity-impact">Opportunity to distribute demand across more collections, reducing dependence on hero products while increasing total catalog productivity.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">4</div>
+        <div>
+          <div class="opportunity-title">Strengthen Perceived Value</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Reinforce the premium positioning of Karma &amp; Luck through more consistent storytelling, craftsmanship communication, symbolism and gifting experiences across all Amazon touchpoints.</div>
+          <span class="badge badge-med-high">Medium – High</span>
+          <div class="opportunity-impact">Opportunity to improve purchase confidence while supporting the brand's premium pricing strategy.</div>
+        </div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-num">5</div>
+        <div>
+          <div class="opportunity-title">Increase Customer Value</div>
+          <div class="opportunity-desc" style="margin-bottom:.6rem;">Encourage broader portfolio adoption through Virtual Bundles, intention-based merchandising and stronger cross-selling to increase average order value and customer lifetime value.</div>
+          <span class="badge badge-med-high">Medium – High</span>
+          <div class="opportunity-impact">Opportunity to increase average order value without requiring additional traffic acquisition.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comments-s01"></div>
+  </div>
+</div>
+
+<!-- S02 — COLLECTION FOCUS -->
+<div class="section" id="s02">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Collection Focus</span>
+    </div>
+    <p>The catalog review identified four collections with the greatest potential to drive future growth, based on current performance, search demand and historical trends. These collections should be prioritized across SEO, advertising, creative development, Store optimization and Brand Story updates.</p>
+
+    <table class="collection-table">
+      <thead>
+        <tr>
+          <th>Collection</th>
+          <th>Current Position</th>
+          <th>Growth Opportunity</th>
+          <th>Recommended Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Protection Collection</strong><br><span class="collection-sub">Evil Eye, Red String &amp; Protection Jewelry</span></td>
+          <td>The brand's strongest customer acquisition category with significant non-branded search demand.</td>
+          <td><span class="badge badge-high">Very High</span></td>
+          <td>Continue expanding non-branded visibility, strengthen collection positioning and reinforce premium value across the customer journey.</td>
+        </tr>
+        <tr>
+          <td><strong>Crystal Trees</strong></td>
+          <td>Historically one of the brand's strongest collections with significant opportunity to re-establish category leadership.</td>
+          <td><span class="badge badge-high">Very High</span></td>
+          <td>Re-establish Crystal Trees as one of the brand's key collections through improved search visibility, premium positioning and greater prominence across the Store and advertising.</td>
+        </tr>
+        <tr>
+          <td><strong>Men's Collection</strong></td>
+          <td>Established collection with opportunity to capture a larger share of the men's spiritual jewelry market.</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td>Strengthen collection visibility, improve differentiation and create stronger pathways into complementary collections.</td>
+        </tr>
+        <tr>
+          <td><strong>Home Décor Collection</strong></td>
+          <td>Category with opportunity to broaden the customer journey beyond jewelry.</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td>Increase collection visibility, strengthen connections with the core jewelry portfolio and position Home Décor as a natural extension of the Karma &amp; Luck lifestyle.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="collection-mobile">
+      <div class="collection-grid">
+        <div class="collection-card">
+          <div class="collection-card-title">Protection Collection</div>
+          <div style="font-size:.8rem;color:var(--grey);margin-bottom:.6rem;">Evil Eye, Red String &amp; Protection Jewelry</div>
+          <div class="collection-card-badge"><span class="badge badge-high">Very High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>The brand's strongest customer acquisition category with significant non-branded search demand.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Continue expanding non-branded visibility, strengthen collection positioning and reinforce premium value across the customer journey.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Crystal Trees</div>
+          <div class="collection-card-badge"><span class="badge badge-high">Very High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Historically one of the brand's strongest collections with significant opportunity to re-establish category leadership.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Re-establish Crystal Trees as one of the brand's key collections through improved search visibility, premium positioning and greater prominence across the Store and advertising.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Men's Collection</div>
+          <div class="collection-card-badge"><span class="badge badge-high">High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Established collection with opportunity to capture a larger share of the men's spiritual jewelry market.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Strengthen collection visibility, improve differentiation and create stronger pathways into complementary collections.</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-title">Home Décor Collection</div>
+          <div class="collection-card-badge"><span class="badge badge-high">High Growth Opportunity</span></div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Current Position</div>
+            <p>Category with opportunity to broaden the customer journey beyond jewelry.</p>
+          </div>
+          <div class="collection-card-section">
+            <div class="collection-card-label">Recommended Focus</div>
+            <p>Increase collection visibility, strengthen connections with the core jewelry portfolio and position Home Décor as a natural extension of the Karma &amp; Luck lifestyle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comments-s02"></div>
+  </div>
+</div>
+
+<!-- S03 — GROWTH OPPORTUNITY 1 -->
+<div class="section" id="s03">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 1:</span> Protect Existing Revenue</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Maintain availability across hero collections.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Historical stockouts impacted several hero collections, resulting in avoidable revenue leakage.</li>
+      <li>Current inventory health has improved significantly and is no longer a primary constraint to growth.</li>
+      <li>The opportunity has shifted from resolving inventory issues to protecting existing demand through proactive inventory planning.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Prioritize inventory planning across the brand's highest-performing collections.</li>
+      <li>Implement collection-level forecasting to better align replenishment with demand trends.</li>
+      <li>Establish regular inventory health reviews to identify potential risks before they impact sales.</li>
+    </ul>
+
+    <div id="comments-s03"></div>
+  </div>
+</div>
+
+<!-- S04 — GROWTH OPPORTUNITY 2 -->
+<div class="section" id="s04">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 2:</span> Expand Customer Acquisition</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Continue expanding visibility beyond branded searches.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Branded searches continue to drive a significant share of customer acquisition.</li>
+      <li>Significant opportunity exists to expand visibility across Evil Eye, Red String and Crystal Trees.</li>
+      <li>Current PPC structure provides a strong foundation but remains primarily focused on individual products rather than collections.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Expand non-branded SEO across the highest-opportunity product categories.</li>
+      <li>Increase Sponsored Brands investment to strengthen collection-level visibility and New-to-Brand acquisition.</li>
+      <li>Develop a collection-based PPC strategy to support category ownership beyond individual ASINs.</li>
+      <li>Leverage Creator storytelling to introduce new customers to the brand through symbolism, craftsmanship and customer intentions rather than individual products.</li>
+    </ul>
+
+    <div id="comments-s04"></div>
+  </div>
+</div>
+
+<!-- S05 — GROWTH OPPORTUNITY 3 -->
+<div class="section" id="s05">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 3:</span> Improve Catalog Discovery &amp; Customer Journey</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Help customers discover more products by creating stronger connections between collections throughout the customer journey.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>The Amazon Store is primarily organized around product categories rather than customer intent.</li>
+      <li>Collections are presented largely as independent shopping destinations.</li>
+      <li>Opportunities for customers to discover related collections throughout the shopping journey are limited.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Introduce intention-based Store navigation to better align with how customers shop.</li>
+      <li>Refresh the Brand Story to strengthen portfolio discovery and introduce complementary collections.</li>
+      <li>Create stronger connections between related collections (e.g. Protection &#8594; Crystal Trees, Bracelets &#8594; Necklaces).</li>
+      <li>Develop collection-focused store pages to improve product discovery.</li>
+    </ul>
+
+    <div id="comments-s05"></div>
+  </div>
+</div>
+
+<!-- S06 — GROWTH OPPORTUNITY 4 -->
+<div class="section" id="s06">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 4:</span> Strengthen Perceived Value</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Reinforce Karma &amp; Luck's premium positioning consistently throughout the customer journey.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>Premium pricing is aligned with the brand positioning.</li>
+      <li>Voice of the Customer is generally healthy.</li>
+      <li>Opportunity lies in strengthening how craftsmanship, symbolism and gifting are communicated throughout the shopping experience.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Strengthen premium storytelling across the customer journey.</li>
+      <li>Complete the creative refresh to better communicate craftsmanship, symbolism and product quality.</li>
+      <li>Refine gifting positioning to strengthen emotional appeal and key purchasing occasions.</li>
+      <li>Create a more consistent premium experience across Listings, Store, A+ Content, Brand Story and Sponsored Brand creative.</li>
+    </ul>
+
+    <div id="comments-s06"></div>
+  </div>
+</div>
+
+<!-- S07 — GROWTH OPPORTUNITY 5 -->
+<div class="section" id="s07">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title"><span style="color:var(--red);">Growth Opportunity 5:</span> Increase Customer Value</span>
+    </div>
+
+    <div class="red-label">Objective</div>
+    <p>Increase average order value through broader product adoption.</p>
+
+    <div class="sub-heading">Observations</div>
+    <ul class="bullet-list">
+      <li>No bundles identified.</li>
+      <li>Complementary collections sold independently, limiting opportunities for cross-collection purchases.</li>
+      <li>Strong opportunity for intention-based positioning.</li>
+    </ul>
+
+    <div class="sub-heading">Key Recommendations</div>
+    <ul class="bullet-list">
+      <li>Develop a cross-sell framework across related collections (e.g. Protection &#8594; Crystal Trees, Bracelets &#8594; Necklaces).</li>
+      <li>Launch Virtual Bundles around key customer intentions and occasions.</li>
+      <li>Strengthen collection discovery throughout the customer journey across the Store, Brand Story, A+ Content and Sponsored Brands.</li>
+    </ul>
+
+    <div id="comments-s07"></div>
+  </div>
+</div>
+
+<!-- S08 — CONCLUSION -->
+<div class="section" id="s08">
+  <div class="content">
+    <div class="section-header">
+      
+      <span class="section-title">Conclusion</span>
+    </div>
+
+    <p>The review suggests that Karma &amp; Luck has a strong foundation for continued growth on Amazon. Rather than relying on catalog expansion or pricing adjustments, the greatest opportunities lie in maximizing the potential of the existing catalog.</p>
+
+    <p>By strengthening customer acquisition, improving product discovery, reinforcing perceived value and increasing customer value, Karma &amp; Luck can build a more diversified and scalable Amazon presence while reducing reliance on a small number of hero products.</p>
+
+    <div id="comments-s08"></div>
+  </div>
+</div>
+
+<!-- DIVIDER: STRATEGIC ROADMAP -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="section-divider-label">Part Two</div>
+    <div class="section-divider-title">Strategic Roadmap</div>
+  </div>
+</div>
+
+<!-- R01 — CUSTOMER JOURNEY FRAMEWORK -->
+<div class="section" id="r01">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Customer Journey Framework</span>
+    </div>
+    <p>The objective of the Customer Journey Framework is to create a connected shopping experience that naturally guides customers through the Karma &amp; Luck catalog while reinforcing the brand's premium positioning and increasing customer value.</p>
+    <p>The framework should guide the development of all customer-facing Amazon assets, including Listings, Image Stacks, Premium A+, Brand Story, Amazon Store, Sponsored Brands, Creator Connections and Bundles.</p>
+    <p>The customer journey is built around two core angles:</p>
+
+    <div class="sub-heading">1. Discover Within the Collection</div>
+    <p>Customers entering a collection should first be encouraged to discover additional products within that collection, e.g.:</p>
+    <ul class="bullet-list">
+      <li>Protection Bracelet &#8594; Protection Necklace &#8594; Additional Protection Products</li>
+    </ul>
+
+    <div class="sub-heading">2. Discover Between Collections</div>
+    <p>Once customers have explored the collection, they should naturally be introduced to the next complementary collection, e.g.:</p>
+    <ul class="bullet-list">
+      <li>Protection Collection &#8594; Crystal Trees &#8594; Home Décor Collection</li>
+      <li>Protection Collection &#8594; Men's Collection</li>
+    </ul>
+
+    <div class="sub-heading">Framework Should Be Reflected Across</div>
+    <ul class="bullet-list">
+      <li>Listings</li>
+      <li>Image Stacks</li>
+      <li>Video Assets</li>
+      <li>Premium A+</li>
+      <li>Brand Story</li>
+      <li>Amazon Store</li>
+      <li>Sponsored Brands</li>
+      <li>Creator Connections</li>
+      <li>Bundles</li>
+    </ul>
+
+    <div id="comments-r01"></div>
+  </div>
+</div>
+
+<!-- R02 — ADVERTISING DIRECTION -->
+<div class="section" id="r02">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Advertising Direction</span>
+    </div>
+    <p style="color:var(--grey);font-style:italic;">How paid advertising supports the growth strategy · July–December 2026</p>
+    <p>Advertising's job over the rest of the year is simple: turn Karma &amp; Luck's catalog into a connected shopping experience, bring the right shoppers in, and keep them moving from one collection to the next, so a single bracelet becomes the start of a relationship with the brand. This direction sits alongside the wider growth strategy and moves in step with it.</p>
+
+    <div class="sub-heading">Our Approach</div>
+    <ul class="bullet-list">
+      <li><strong>Lead with the brand, not just the product.</strong> Instead of advertising products one at a time, we'll advertise collections — Protection, Crystal Trees, Men's, Home — and lead shoppers into the store and brand experience. This is already the most efficient way the account performs, and it's how we build a collector's journey rather than a one-time sale.</li>
+      <li><strong>Focus, don't spread.</strong> We'll concentrate investment behind the hero products and collections that matter most, at the accessible price point that fits Amazon shoppers. Deep and intentional beats wide and thin.</li>
+      <li><strong>Attract the right shopper.</strong> We're not chasing the cheapest, lowest-intent clicks. We're bidding for shoppers who value craftsmanship, symbolism, and meaning — the ones who come back for the next piece — while keeping a close eye on profitability throughout.</li>
+      <li><strong>Build toward Q4.</strong> Everything ramps toward the season. We'll grow the audience now, re-engage the shoppers we reached over Prime Day (which came in strongly, nearly doubling year on year), and have the store and advertising working together and ready to scale when demand peaks.</li>
+    </ul>
+
+    <div class="sub-heading">The Journey Ahead</div>
+    <table class="roadmap-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>When</th>
+          <th>Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Reset &amp; Focus</td>
+          <td>July</td>
+          <td>Tighten the account around the hero collections and set a clean, efficient foundation.</td>
+        </tr>
+        <tr>
+          <td>Build the Collections</td>
+          <td>August</td>
+          <td>Launch collection and store-led brand advertising, including premium video, and scale what's working.</td>
+        </tr>
+        <tr>
+          <td>Connect the Journey</td>
+          <td>September</td>
+          <td>Link collections together so shoppers move naturally between them, and start bringing back past buyers.</td>
+        </tr>
+        <tr>
+          <td>Ramp for the Season</td>
+          <td>October</td>
+          <td>Point advertising at the refreshed store and prepare the full holiday plan.</td>
+        </tr>
+        <tr>
+          <td>Peak</td>
+          <td>November</td>
+          <td>Full-strength presence through the key shopping period, front and centre where it counts.</td>
+        </tr>
+        <tr>
+          <td>Finish Strong</td>
+          <td>December</td>
+          <td>Carry momentum through gifting season, then capture the learnings to start 2027 ahead.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="comments-r02"></div>
+  </div>
+</div>
+
+<!-- R03 — HIGH-LEVEL ROADMAP -->
+<div class="section" id="r03">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">High-Level Roadmap</span>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-card-label">Phase 1</div>
+        <div class="phase-card-months">Months 1–2</div>
+        <div class="phase-card-obj">Implement the Customer Journey Framework</div>
+        <div class="phase-card-desc">Finalize the strategic frameworks and begin implementation across the priority collections and Amazon storefront.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-card-label">Phase 2</div>
+        <div class="phase-card-months">Months 3–4</div>
+        <div class="phase-card-obj">Execute Across Priority Collections</div>
+        <div class="phase-card-desc">Roll out the new customer journey, premium positioning and collection strategy across the highest-priority collections while expanding customer acquisition.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-card-label">Phase 3</div>
+        <div class="phase-card-months">Months 5–6</div>
+        <div class="phase-card-obj">Scale &amp; Optimize</div>
+        <div class="phase-card-desc">Continue expanding implementation across the catalog, increase customer value and optimize performance heading into the holiday season.</div>
+      </div>
+    </div>
+
+    <div id="comments-r03"></div>
+  </div>
+</div>
+
+<!-- R04 — IMPLEMENTATION PLAN -->
+<div class="section" id="r04">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Implementation Plan</span>
+    </div>
+    <p>&#9679; indicates active work in that month.</p>
+
+    <table class="impl-table">
+      <thead>
+        <tr>
+          <th>Workstream</th>
+          <th>Project</th>
+          <th>Jul</th>
+          <th>Aug</th>
+          <th>Sep</th>
+          <th>Oct</th>
+          <th>Nov</th>
+          <th>Dec</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Strategic Frameworks</td>
+          <td>Customer Journey Framework</td>
+          <td><span class="impl-dot"></span></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>Advertising Strategy Framework</td>
+          <td><span class="impl-dot"></span></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Inventory Planning Framework</td>
+          <td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td rowspan="4">Collection Optimization</td>
+          <td>Protection Collection</td>
+          <td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>Store &amp; Brand Story Implementation</td>
+          <td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>Crystal Trees Collection</td>
+          <td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>Men's Collection</td>
+          <td></td><td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Home Décor Collection</td>
+          <td></td><td></td><td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td>
+        </tr>
+        <tr>
+          <td rowspan="3">Growth Initiatives</td>
+          <td>Collection-Based PPC Rollout</td>
+          <td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td>
+        </tr>
+        <tr>
+          <td>Creator Connections Program</td>
+          <td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td>
+        </tr>
+        <tr>
+          <td>Bundles</td>
+          <td></td><td></td><td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Q4 Readiness</td>
+          <td>Q4 Strategy &amp; Asset Preparation</td>
+          <td></td><td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>Black Friday / Cyber Monday Execution</td>
+          <td></td><td></td><td></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td></td>
+        </tr>
+        <tr>
+          <td>Performance Optimization</td>
+          <td>Performance Review &amp; Optimization</td>
+          <td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td><td><span class="impl-dot"></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Each collection optimization includes SEO, listing copy, image stack, Premium A+, Brand Story integration, customer journey implementation, Creator Connections, and PPC handoff.</p>
+
+    <div class="impl-mobile">
+      <div class="impl-mobile-group">
+        <div class="impl-mobile-group-label">Strategic Frameworks</div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Customer Journey Framework</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Advertising Strategy Framework</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Inventory Planning Framework</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span><span class="impl-month-pill">Aug</span></div>
+        </div>
+      </div>
+      <div class="impl-mobile-group">
+        <div class="impl-mobile-group-label">Collection Optimization</div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Protection Collection</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span><span class="impl-month-pill">Aug</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Store &amp; Brand Story Implementation</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span><span class="impl-month-pill">Aug</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Crystal Trees Collection</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Aug</span><span class="impl-month-pill">Sep</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Men's Collection</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Sep</span><span class="impl-month-pill">Oct</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Home Décor Collection</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span></div>
+        </div>
+      </div>
+      <div class="impl-mobile-group">
+        <div class="impl-mobile-group-label">Growth Initiatives</div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Collection-Based PPC Rollout</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Aug</span><span class="impl-month-pill">Sep</span><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span><span class="impl-month-pill">Dec</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Creator Connections Program</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span><span class="impl-month-pill">Aug</span><span class="impl-month-pill">Sep</span><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span><span class="impl-month-pill">Dec</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Bundles</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span></div>
+        </div>
+      </div>
+      <div class="impl-mobile-group">
+        <div class="impl-mobile-group-label">Q4 Readiness</div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Q4 Strategy &amp; Asset Preparation</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Sep</span><span class="impl-month-pill">Oct</span></div>
+        </div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Black Friday / Cyber Monday Execution</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span></div>
+        </div>
+      </div>
+      <div class="impl-mobile-group">
+        <div class="impl-mobile-group-label">Performance Optimization</div>
+        <div class="impl-mobile-row">
+          <div class="impl-mobile-project">Performance Review &amp; Optimization</div>
+          <div class="impl-mobile-months"><span class="impl-month-pill">Jul</span><span class="impl-month-pill">Aug</span><span class="impl-month-pill">Sep</span><span class="impl-month-pill">Oct</span><span class="impl-month-pill">Nov</span><span class="impl-month-pill">Dec</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>The roadmap is intentionally sequenced so that strategic frameworks are established first, followed by collection optimization, growth initiatives and seasonal execution. Each phase builds on the previous one to ensure every optimization reinforces the Customer Journey Framework while preparing the business for peak holiday demand.</p>
+
+    <div id="comments-r04"></div>
+  </div>
+</div>
+
+<!-- R05 — PROJECT DELIVERABLES -->
+<div class="section" id="r05">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Project Deliverables</span>
+    </div>
+    <p>Each of the 14 projects on the timeline is broken into concrete deliverables below. Several deliverables sit inside more than one project — a listing rewrite, an image stack module, or a creator brief gets built once and reused everywhere it applies. Where that happens, it's flagged under "Shared with," so nothing gets built twice and nothing falls through a gap between two projects.</p>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.1</span>
+        <span class="deliverable-title">Customer Journey Framework</span>
+        <span class="deliverable-period">July (framework build); listing optimization runs through December</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Map the "Discover Within Collection" and "Discover Between Collection" paths for all four hero collections (Protection, Crystal Trees, Men's, Home Décor) and the connective logic between them.</li>
+        <li>Listing optimization on the top 10–12 revenue-driving listings, including all parent/child variations — titles, bullets, and backend search terms rewritten to reinforce collection cross-sell. Runs July through December, expanding coverage as each collection rolls out.</li>
+        <li>Image stack and Premium A+ framework: define the standard cross-sell modules (within-collection carousel, between-collection carousel) to be dropped into each listing as its collection is optimized.</li>
+        <li>Brand Story template redesign that encodes the journey logic, ready to be populated per collection.</li>
+        <li>UGC / Creator content brief template — defines what creator content needs to capture to support the journey narrative.</li>
+        <li>Amazon Store sitemap redraft reflecting within- and between-collection navigation.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Store &amp; Brand Story Implementation, Creator Connections Program, all Collection Optimization projects.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.2</span>
+        <span class="deliverable-title">Advertising Strategy Framework</span>
+        <span class="deliverable-period">July</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Account audit and reset — pause or consolidate underperforming single-SKU campaigns into collection structures.</li>
+        <li>Collection-led campaign architecture defined for Sponsored Products, Sponsored Brands, and Sponsored Display.</li>
+        <li>Budget allocation model weighted to the hero collections and the accessible price point that converts.</li>
+        <li>Audience and retargeting plan built around the Prime Day 2026 engagement list.</li>
+        <li>Q4 ramp logic mapped against the six-phase journey (Reset &#8594; Build &#8594; Connect &#8594; Ramp &#8594; Peak &#8594; Finish).</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Collection-Based PPC Rollout, Inventory Planning Framework (spend follows stock).</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.3</span>
+        <span class="deliverable-title">Protection Collection</span>
+        <span class="deliverable-period">July – August</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Priority parent listings for this collection are set in Section 6 — sign off or substitute before optimization work begins.</li>
+        <li>Listing optimization applying the Customer Journey Framework (within: bracelet &#8594; necklace &#8594; other Protection pieces; between: &#8594; Crystal Trees, &#8594; Men's).</li>
+        <li>Image stack update applying the standard cross-sell modules from Section 5.1.</li>
+        <li>Premium A+ refresh with within- and between-collection CTAs.</li>
+        <li>Creator Connections content brief for the Protection line.</li>
+        <li>Bundle build — one within-collection bundle, one cross-collection gifting bundle.</li>
+        <li>Handoff to Collection-Based PPC Rollout once assets are live.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, Creator Connections Program, Bundles, Collection-Based PPC Rollout.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.4</span>
+        <span class="deliverable-title">Store &amp; Brand Story Implementation</span>
+        <span class="deliverable-period">End of August</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Amazon Store redesign applying the Customer Journey sitemap — collection landing pages plus cross-collection linking modules.</li>
+        <li>Brand Story redesign per collection, using the Section 5.1 template.</li>
+        <li>Sponsored Brands store-spotlight creative aligned to the new store layout.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, Advertising Strategy Framework.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.5</span>
+        <span class="deliverable-title">Crystal Trees Collection</span>
+        <span class="deliverable-period">August – September</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Priority parent listings for this collection are set in Section 6.</li>
+        <li>Listing optimization applying the journey logic (within: hero tree &#8594; companion pieces; between: &#8594; Protection, &#8594; Home Décor).</li>
+        <li>Image stack update, Premium A+ refresh, Creator Connections brief, and bundle build.</li>
+        <li>Handoff to Collection-Based PPC Rollout once assets are live.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, Creator Connections Program, Bundles, Collection-Based PPC Rollout.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.6</span>
+        <span class="deliverable-title">Men's Collection</span>
+        <span class="deliverable-period">September – October</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Priority parent listings for this collection are set in Section 6.</li>
+        <li>Listing optimization applying the journey logic (within: bracelet &#8594; complementary Men's pieces; between: &#8594; Protection Collection).</li>
+        <li>Image stack update, Premium A+ refresh, Creator Connections brief and shoot, and bundle build.</li>
+        <li>Handoff to Collection-Based PPC Rollout once assets are live.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, Creator Connections Program, Bundles, Collection-Based PPC Rollout.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.7</span>
+        <span class="deliverable-title">Home Décor Collection</span>
+        <span class="deliverable-period">October – November</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Priority parent listings for this collection are set in Section 6.</li>
+        <li>Listing optimization applying the journey logic (within: hero décor piece &#8594; companion pieces; between: &#8594; Crystal Trees).</li>
+        <li>Image stack update, Premium A+ refresh, Creator Connections brief, and bundle build.</li>
+        <li>Handoff to Collection-Based PPC Rollout once assets are live, timed for holiday gifting demand.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, Creator Connections Program, Bundles, Collection-Based PPC Rollout, Q4 Strategy &amp; Asset Preparation.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.8</span>
+        <span class="deliverable-title">Collection-Based PPC Rollout</span>
+        <span class="deliverable-period">August – December</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Sequential campaign launch, collection by collection, as each collection's optimization completes (Protection &#8594; Crystal Trees &#8594; Men's &#8594; Home Décor).</li>
+        <li>Cross-collection remarketing and Sponsored Display campaigns activated once two or more collections are live.</li>
+        <li>Prime Day re-engagement audience activated across the rolled-out collections.</li>
+        <li>Monthly bid and budget reallocation toward what's converting, per the Advertising Strategy Framework.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Advertising Strategy Framework, all Collection Optimization projects, Inventory Planning Framework.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.9</span>
+        <span class="deliverable-title">Creator Connections Program</span>
+        <span class="deliverable-period">July – December, continuous</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Recruit and brief creators per collection, using the content brief template from Section 5.1.</li>
+        <li>Campaign calendar aligned to the collection launch sequence (Protection &#8594; Crystal Trees &#8594; Men's &#8594; Home Décor).</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, every Collection Optimization project.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.10</span>
+        <span class="deliverable-title">Bundles</span>
+        <span class="deliverable-period">October – November</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Bundle build for each confirmed Parent ASIN, targeting the Customer Journey angles — a within-collection bundle and a cross-collection / gifting bundle.</li>
+        <li>Bundle-specific PPC support built ahead of Q4 to drive bundle discovery.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Customer Journey Framework, every Collection Optimization project, Q4 Strategy &amp; Asset Preparation.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.11</span>
+        <span class="deliverable-title">Q4 Strategy &amp; Asset Preparation</span>
+        <span class="deliverable-period">September – October</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Holiday creative refresh — store banners, A+ holiday modules, gifting-focused Sponsored Brands video.</li>
+        <li>Inventory buffer confirmed against Q4 sales projections.</li>
+        <li>BFCM campaign structure and budget pre-built ahead of the event.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Inventory Planning Framework, Home Décor Collection, Bundles.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.12</span>
+        <span class="deliverable-title">Black Friday / Cyber Monday Execution</span>
+        <span class="deliverable-period">October – November</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Lightning deals and coupon calendar finalized and scheduled.</li>
+        <li>Live bid and budget management through the peak window.</li>
+        <li>Daily stock monitoring through peak to prevent mid-event stock-outs on hero ASINs.</li>
+      </ul>
+      <div class="deliverable-shared">Shared with: Inventory Planning Framework, Advertising Strategy Framework.</div>
+    </div>
+
+    <div class="deliverable-card">
+      <div class="deliverable-card-header">
+        <span class="deliverable-num">5.13</span>
+        <span class="deliverable-title">Performance Review &amp; Optimization</span>
+        <span class="deliverable-period">July – December, continuous</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Monthly performance report covering sales, ACOS/TACOS, inventory health, and journey conversion between collections.</li>
+        <li>Bi-weekly PPC optimization pass across live campaigns.</li>
+        <li>End-of-year learnings document to inform 2027 planning.</li>
+      </ul>
+    </div>
+
+    <div id="comments-r05"></div>
+  </div>
+</div>
+
+<!-- R06 — COLLECTION ASIN ASSIGNMENTS -->
+<div class="section" id="r06">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Collection ASIN Assignments</span>
+    </div>
+    <p>Each hero collection is built around its 3 highest revenue-driving parent listings, based on the last 6 months of sales data. That's 4 collections × 3 listings = 12 parent listings total — matching capacity for the next 6 months at 2 parent listings optimized per month (each listing including all of its variations).</p>
+
+    <div class="sub-heading">Protection Collection</div>
+    <table class="asin-table">
+      <thead><tr><th>Rank</th><th>Parent ASIN</th><th>Product</th><th>Units (6mo)</th><th>Revenue (6mo)</th><th>Variations</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><span class="asin-code">B09H3PDR1M</span></td><td>Red String Evil Eye Protection Bracelet, 18K Charm &amp; Hematite Stone</td><td>420</td><td>$19,825.60</td><td><span class="asin-children">3 child ASINs</span></td></tr>
+        <tr><td>2</td><td><span class="asin-code">B0GV1T1BFC</span></td><td>Red String Lucky Bracelet, 18K Elephant Charm &amp; Diamond Chip</td><td>238</td><td>$16,763.00</td><td><span class="asin-children">7 child ASINs</span></td></tr>
+        <tr><td>3</td><td><span class="asin-code">B0BWGCHWV2</span></td><td>Walk with Integrity — Hematite Bracelet, Adjustable Drawstring</td><td>221</td><td>$12,779.40</td><td><span class="asin-children">3 child ASINs</span></td></tr>
+      </tbody>
+    </table>
+    <div class="asin-mobile">
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 1</div>
+        <div class="asin-mobile-product">Red String Evil Eye Protection Bracelet, 18K Charm &amp; Hematite Stone</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B09H3PDR1M</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>420</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$19,825.60</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>3 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 2</div>
+        <div class="asin-mobile-product">Red String Lucky Bracelet, 18K Elephant Charm &amp; Diamond Chip</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0GV1T1BFC</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>238</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$16,763.00</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>7 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 3</div>
+        <div class="asin-mobile-product">Walk with Integrity — Hematite Bracelet, Adjustable Drawstring</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0BWGCHWV2</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>221</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$12,779.40</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>3 child ASINs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Crystal Trees Collection</div>
+    <table class="asin-table">
+      <thead><tr><th>Rank</th><th>Parent ASIN</th><th>Product</th><th>Units (6mo)</th><th>Revenue (6mo)</th><th>Variations</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><span class="asin-code">B0DJC6DB45</span></td><td>Jade Crystal Feng Shui Tree of Life, Copper Wire on Agate Base</td><td>84</td><td>$13,567.10</td><td><span class="asin-children">3 child ASINs</span></td></tr>
+        <tr><td>2</td><td><span class="asin-code">B0DKTYXP2X</span></td><td>Feng Shui Crystal Birthstone Tree — 7" Gem Tree with Evil Eye</td><td>68</td><td>$9,189.60</td><td><span class="asin-children">12 child ASINs</span></td></tr>
+        <tr><td>3</td><td><span class="asin-code">B0DJCBTHMR</span></td><td>Invigorate Feng Shui Tree of Life, Real Gemstones, Copper Wire</td><td>18</td><td>$3,048.20</td><td><span class="asin-children">3 child ASINs</span></td></tr>
+      </tbody>
+    </table>
+    <div class="asin-mobile">
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 1</div>
+        <div class="asin-mobile-product">Jade Crystal Feng Shui Tree of Life, Copper Wire on Agate Base</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0DJC6DB45</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>84</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$13,567.10</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>3 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 2</div>
+        <div class="asin-mobile-product">Feng Shui Crystal Birthstone Tree — 7" Gem Tree with Evil Eye</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0DKTYXP2X</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>68</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$9,189.60</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>12 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 3</div>
+        <div class="asin-mobile-product">Invigorate Feng Shui Tree of Life, Real Gemstones, Copper Wire</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0DJCBTHMR</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>18</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$3,048.20</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>3 child ASINs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Men's Collection</div>
+    <table class="asin-table">
+      <thead><tr><th>Rank</th><th>Parent ASIN</th><th>Product</th><th>Units (6mo)</th><th>Revenue (6mo)</th><th>Variations</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><span class="asin-code">B09CBYZH43</span></td><td>Ancient Protection — Men's Sterling Silver Evil Eye Charm Bracelet</td><td>164</td><td>$8,097.60</td><td><span class="asin-children">3 child ASINs</span></td></tr>
+        <tr><td>2</td><td><span class="asin-code">B0BWGFSBVB</span></td><td>Grounding Force — Triple Protection Macrame Bracelet for Men</td><td>89</td><td>$7,565.00</td><td><span class="asin-children">2 child ASINs</span></td></tr>
+        <tr><td>3</td><td><span class="asin-code">B0DXX333RX</span></td><td>Stress Soother — Men's Onyx Evil Eye Beaded Bracelet</td><td>113</td><td>$5,255.20</td><td><span class="asin-children">6 child ASINs</span></td></tr>
+      </tbody>
+    </table>
+    <div class="asin-mobile">
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 1</div>
+        <div class="asin-mobile-product">Ancient Protection — Men's Sterling Silver Evil Eye Charm Bracelet</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B09CBYZH43</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>164</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$8,097.60</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>3 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 2</div>
+        <div class="asin-mobile-product">Grounding Force — Triple Protection Macrame Bracelet for Men</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0BWGFSBVB</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>89</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$7,565.00</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>2 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 3</div>
+        <div class="asin-mobile-product">Stress Soother — Men's Onyx Evil Eye Beaded Bracelet</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0DXX333RX</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>113</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$5,255.20</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>6 child ASINs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Home Décor Collection</div>
+    <table class="asin-table">
+      <thead><tr><th>Rank</th><th>Parent ASIN</th><th>Product</th><th>Units (6mo)</th><th>Revenue (6mo)</th><th>Variations</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><span class="asin-code">B09JKQFL5Z</span></td><td>Ultimate Believer — Multistone Wall Blessing Plaque</td><td>137</td><td>$7,788.00</td><td><span class="asin-children">1 child ASIN</span></td></tr>
+        <tr><td>2</td><td><span class="asin-code">B0G14WB52T</span></td><td>Radiant Protection Yoga Towel, Non-Slip, Silicone Grip</td><td>123</td><td>$4,781.40</td><td><span class="asin-children">5 child ASINs</span></td></tr>
+        <tr><td>3</td><td><span class="asin-code">B0DXFQTX7S</span></td><td>Sacred Balance Hamsa Car Freshener</td><td>75</td><td>$1,425.00</td><td><span class="asin-children">4 child ASINs</span></td></tr>
+      </tbody>
+    </table>
+    <div class="asin-mobile">
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 1</div>
+        <div class="asin-mobile-product">Ultimate Believer — Multistone Wall Blessing Plaque</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B09JKQFL5Z</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>137</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$7,788.00</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>1 child ASIN</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 2</div>
+        <div class="asin-mobile-product">Radiant Protection Yoga Towel, Non-Slip, Silicone Grip</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0G14WB52T</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>123</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$4,781.40</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>5 child ASINs</div>
+        </div>
+      </div>
+      <div class="asin-mobile-card">
+        <div class="asin-mobile-rank">Rank 3</div>
+        <div class="asin-mobile-product">Sacred Balance Hamsa Car Freshener</div>
+        <div class="asin-mobile-meta">
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Parent ASIN</span><span class="asin-mobile-code">B0DXFQTX7S</span></div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Units (6mo)</span>75</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Revenue (6mo)</span>$1,425.00</div>
+          <div class="asin-mobile-meta-item"><span class="asin-mobile-meta-label">Variations</span>4 child ASINs</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comments-r06"></div>
+  </div>
+</div>
+
+<!-- R07 — INVENTORY PLANNING FRAMEWORK -->
+<div class="section" id="r07">
+  <div class="content">
+    <div class="section-header">
+      <span class="section-title">Inventory Planning Framework</span>
+    </div>
+    <p>This framework runs in July and August and continues to feed every downstream project — advertising doesn't get pointed at a collection until its inventory position is confirmed.</p>
+
+    <div class="sub-heading">7.1 Q4 Inventory Planning Kickoff</div>
+    <p style="color:var(--grey);font-size:.9rem;margin-bottom:.75rem;">First Week of August</p>
+    <ul class="bullet-list">
+      <li>Kick off Q4 inventory planning in the first week of August, ahead of the broader ramp-for-the-season phase.</li>
+      <li>Pull projected Q4 demand per hero collection and cross-check against current and incoming stock.</li>
+      <li>Set replenishment cutoff dates for Q4 based on supplier lead times, so POs land before the November–December peak.</li>
+      <li>Flag any ASIN that needs an early reorder to avoid a Q4 stock-out, with priority given to confirmed Parent ASINs (Section 6).</li>
+    </ul>
+
+    <div class="sub-heading">7.2 Replenish Out-of-Stock ASINs</div>
+    <ul class="bullet-list">
+      <li>Pull a current OOS / at-risk report across all four hero collections.</li>
+      <li>Confirm supplier lead times and issue POs for anything OOS or projected OOS before the Q4 ramp.</li>
+      <li>Flag any OOS ASIN that's also a Parent ASIN in Section 6 — these block that collection's PPC rollout and take priority.</li>
+    </ul>
+
+    <div class="sub-heading">7.3 Remove Aged Inventory</div>
+    <ul class="bullet-list">
+      <li>Pull the aged inventory report (181+ days) across the catalog.</li>
+      <li>Decide, SKU by SKU, whether to price-reduce and sell through or remove/liquidate — factoring in the aged inventory surcharge cost of holding versus the cost of removal.</li>
+      <li>Clear aged stock ahead of Q4 inbound shipments to free up capacity.</li>
+    </ul>
+
+    <div class="sub-heading">7.4 Secure Additional Amazon Storage Capacity</div>
+    <ul class="bullet-list">
+      <li>Review current IPI score and storage utilization limits.</li>
+      <li>Identify the actions (sell-through, removals, restock pacing) that improve IPI ahead of the Q4 storage request window.</li>
+      <li>Submit the storage capacity request in time to receive expanded limits before peak inbound shipments for November–December.</li>
+    </ul>
+
+    <div class="sub-heading">7.5 Advertising / Inventory Coordination</div>
+    <ul class="bullet-list">
+      <li>No PPC spend is directed at an ASIN that is OOS or within its projected OOS window.</li>
+      <li>Collection-Based PPC Rollout for a given collection does not go live until its confirmed Parent ASINs (Section 6) are in stock and the aged-inventory decision is resolved.</li>
+    </ul>
+
+    <div id="comments-r07"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="text-align:center;width:100%;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:.6rem;">We Make Good Brands Go Bad</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--grey);">BAD Marketing &nbsp;·&nbsp; Amazon Department</div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMobile').classList.toggle('open');
+  }
+
+  // Progress bar
+  window.addEventListener('scroll',()=>{
+    const d=document.documentElement;
+    const pct=(d.scrollTop/(d.scrollHeight-d.clientHeight));
+    document.getElementById('progress').style.transform='scaleX('+pct+')';
+  });
+
+  // Section fade-in
+  const sections=document.querySelectorAll('.section');
+  const sectionObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+  },{threshold:0.08});
+  sections.forEach(s=>sectionObs.observe(s));
+
+  const SUPABASE_URL='https://zbcqdcwibbuyfmytfngn.supabase.co';
+  const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpiY3FkY3dpYmJ1eWZteXRmbmduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTgyNTEsImV4cCI6MjA5Nzg3NDI1MX0.gXJna_dG08OVNyQy6VyakhJ7ays93ibLlWCDrS6W1RM';
+  const DOC_PREFIX='karma-and-luck-q2-2026';
+
+  const SECTIONS={
+    's01':'01 · Opportunity Summary',
+    's02':'02 · Collection Focus',
+    's03':'03 · Protect Existing Revenue',
+    's04':'04 · Expand Customer Acquisition',
+    's05':'05 · Improve Catalog Discovery',
+    's06':'06 · Strengthen Perceived Value',
+    's07':'07 · Increase Customer Value',
+    's08':'08 · Conclusion',
+    'r01':'R01 · Customer Journey Framework',
+    'r02':'R02 · Advertising Direction',
+    'r03':'R03 · High-Level Roadmap',
+    'r04':'R04 · Implementation Plan',
+    'r05':'R05 · Project Deliverables',
+    'r06':'R06 · ASIN Assignments',
+    'r07':'R07 · Inventory Planning'
+  };
+
+  async function fetchComments(){
+    try{
+      const ids=Object.keys(SECTIONS).map(s=>`${DOC_PREFIX}-${s}`);
+      const r=await fetch(
+        `${SUPABASE_URL}/rest/v1/comments?section_id=in.(${ids.map(s=>`"${s}"`).join(',')})&order=created_at.asc`,
+        {headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`}}
+      );
+      return await r.json();
+    }catch(e){return[];}
+  }
+
+  async function saveComment(sectionId,name,body){
+    const r=await fetch(`${SUPABASE_URL}/rest/v1/comments`,{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_KEY,
+        'Authorization':`Bearer ${SUPABASE_KEY}`,
+        'Content-Type':'application/json',
+        'Prefer':'return=representation'
+      },
+      body:JSON.stringify({section_id:`${DOC_PREFIX}-${sectionId}`,name:name||'Anonymous',body})
+    });
+    if(!r.ok) throw new Error('Failed to save');
+    return await fetchComments();
+  }
+
+  function formatDate(iso){
+    const d=new Date(iso);
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
+      +' · '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  function renderSection(id,comments){
+    const container=document.getElementById('comments-'+id);
+    if(!container) return;
+    const fullId=`${DOC_PREFIX}-${id}`;
+    const sectionComments=comments.filter(c=>c.section_id===fullId);
+    const count=sectionComments.length;
+    container.innerHTML=`
+      <button class="section-comment-btn ${count>0?'has-comments':''}" onclick="togglePanel('${id}')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        ${count>0?count+' comment'+(count>1?'s':''):'Add comment'}
+        <span class="cb-count">${count}</span>
+      </button>
+      <div class="comment-panel ${count>0?'open':''}" id="panel-${id}">
+        <div class="comment-panel-inner">
+          <div class="comment-thread" id="thread-${id}">
+            ${count===0?'<p class="no-comments">No comments yet on this section.</p>':
+              sectionComments.map(c=>`
+                <div class="comment-item">
+                  <div class="comment-item-header">
+                    <span class="comment-item-name">${escHtml(c.name||'Anonymous')}</span>
+                    <span class="comment-item-time">${formatDate(c.created_at)}</span>
+                  </div>
+                  <p class="comment-item-text">${escHtml(c.body)}</p>
+                </div>`).join('')}
+          </div>
+          <div class="comment-form">
+            <textarea id="txt-${id}" rows="2" placeholder="Write a comment or question on this section..."></textarea>
+            <div class="comment-form-row">
+              <input type="text" id="name-${id}" placeholder="Your name (optional)">
+              <button class="comment-post-btn" id="btn-${id}" onclick="postComment('${id}')">Post</button>
+            </div>
+            <div class="comment-status" id="status-${id}"></div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function togglePanel(id){
+    const panel=document.getElementById('panel-'+id);
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){
+      setTimeout(()=>{const t=document.getElementById('txt-'+id);if(t)t.focus();},50);
+    }
+  }
+
+  async function postComment(id){
+    const txt=document.getElementById('txt-'+id);
+    const nameEl=document.getElementById('name-'+id);
+    const btn=document.getElementById('btn-'+id);
+    const status=document.getElementById('status-'+id);
+    const body=txt.value.trim();
+    if(!body){status.textContent='Please write something first.';status.style.color='#cc1100';return;}
+    btn.disabled=true;status.textContent='Posting...';status.style.color='#8a8a8a';
+    try{
+      const comments=await saveComment(id,nameEl.value.trim(),body);
+      txt.value='';nameEl.value='';
+      status.textContent='Posted ✓';status.style.color='#2a7a2a';
+      setTimeout(()=>{status.textContent='';},3000);
+      Object.keys(SECTIONS).forEach(sid=>renderSection(sid,comments));
+      setTimeout(()=>{const p=document.getElementById('panel-'+id);if(p)p.classList.add('open');},50);
+    }catch(e){
+      status.textContent='Failed to post. Please try again.';status.style.color='#cc1100';
+    }
+    btn.disabled=false;
+  }
+
+  async function init(){
+    const comments=await fetchComments();
+    Object.keys(SECTIONS).forEach(id=>renderSection(id,comments));
+    setTimeout(()=>{
+      Object.keys(SECTIONS).forEach(id=>{
+        const panel=document.getElementById('panel-'+id);
+        const hasComments=comments.some(c=>c.section_id===`${DOC_PREFIX}-${id}`);
+        if(panel&&hasComments) panel.classList.add('open');
+      });
+    },200);
+  }
+
+  init();
+</script>
+</body>
+</html>
